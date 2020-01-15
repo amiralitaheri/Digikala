@@ -7,6 +7,4 @@ data class Category(
     val UrlCode: String,
     val HasMainPage: Boolean,
     val QueryStringValue: String
-) {
-    val childrenCategories: MutableList<Category> = mutableListOf()
-}
+)
