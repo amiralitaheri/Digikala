@@ -1,7 +1,8 @@
-package ir.saatgroup.digikala
+package ir.saatgroup.digikala.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import ir.saatgroup.digikala.R
 
 class MainActivity : AppCompatActivity() {
 

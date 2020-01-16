@@ -8,7 +8,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 
-class BannerApiDao : BannerDao {
+object BannerApiDao : BannerDao {
+
     val digikalaAPI: DigikalaAPI = DigikalaAPIClient
 
     override fun getSlider(): List<Banner> {

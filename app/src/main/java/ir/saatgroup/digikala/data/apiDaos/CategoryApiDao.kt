@@ -8,7 +8,7 @@ import ir.saatgroup.digikala.utils.retrofit.DigikalaAPIClient
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
-class CategoryApiDao : CategoryDao {
+object CategoryApiDao : CategoryDao {
     val digikalaAPI: DigikalaAPI = DigikalaAPIClient
 
     override fun getMainCategories(): List<CategoryWithSub> {
