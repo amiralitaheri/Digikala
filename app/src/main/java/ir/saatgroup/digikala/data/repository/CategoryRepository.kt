@@ -15,8 +15,15 @@ class CategoryRepository(private val categoryDao: CategoryDao) {
 
     }
 
+    lateinit var mainMenuCache: List<CategoryWithSub>
+    var cached = false
+
     fun getMainMenu(): List<CategoryWithSub> {
-        return categoryDao.getMainCategories()
+        if (!cached) {
+            mainMenuCache = categoryDao.getMainCategories()
+            cached = true
+        }
+        return mainMenuCache
     }
 
     fun getChilern(path: String): List<Category> {

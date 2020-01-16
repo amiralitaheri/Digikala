@@ -40,7 +40,8 @@ class MainMenuActivity : AppCompatActivity() {
             tab.text = liveData.value!![position].Category.Title
             viewPager.setCurrentItem(tab.position, true)
         }.attach()
-
+        val b = backButton
+        b.setOnClickListener { finish() }
 
 //        this.toolbar(
 //            noElevation = true,
