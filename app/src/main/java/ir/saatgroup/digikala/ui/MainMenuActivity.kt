@@ -42,12 +42,5 @@ class MainMenuActivity : AppCompatActivity() {
         }.attach()
         val b = backButton
         b.setOnClickListener { finish() }
-
-//        this.toolbar(
-//            noElevation = true,
-//            showBack = true,
-//            showTitle = true,
-//            title = "دسته بندی محصولات"
-//        )
     }
 }

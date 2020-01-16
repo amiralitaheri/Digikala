@@ -18,14 +18,14 @@ object BannerApiDao : BannerDao {
         }
     }
 
-    override suspend fun getMainBanners(): List<Banner> {
+    override fun getMainBanners(): List<Banner> {
         return runBlocking {
             return@runBlocking async { digikalaAPI.getMobileBanners() }.await().Data
 
         }
     }
 
-    override suspend fun getAdvBanners(): List<Banner> {
+    override fun getAdvBanners(): List<Banner> {
         return runBlocking {
             return@runBlocking async { digikalaAPI.getSlider("Advertisement") }.await().Data
         }

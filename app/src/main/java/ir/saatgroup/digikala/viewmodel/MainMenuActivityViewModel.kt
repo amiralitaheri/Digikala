@@ -1,7 +1,5 @@
 package ir.saatgroup.digikala.viewmodel
 
-
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ir.saatgroup.digikala.data.apiDaos.CategoryApiDao
@@ -19,7 +17,6 @@ class MainMenuActivityViewModel : ViewModel() {
 
     fun getMainMenu(): MutableLiveData<List<CategoryWithSub>> {
         catList.value = repository.getMainMenu()
-        Log.i("ffff",catList.value.toString())
         return catList
     }
 }
