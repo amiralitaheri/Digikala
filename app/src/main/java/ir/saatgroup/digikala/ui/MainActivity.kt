@@ -1,6 +1,7 @@
 package ir.saatgroup.digikala.ui
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +16,7 @@ import ir.saatgroup.digikala.data.pojo.Product
 import ir.saatgroup.digikala.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import ss.com.bannerslider.Slider
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,9 +59,30 @@ class MainActivity : AppCompatActivity() {
         chipView.adapter = chipAdapter
 
         //special offers
-//        var contDownTimer = CountDownTimer(){
-//
-//        }
+        val c = Calendar.getInstance()
+        c.add(Calendar.DAY_OF_MONTH, 1)
+        c.set(Calendar.HOUR_OF_DAY, 0)
+        c.set(Calendar.MINUTE, 0)
+        c.set(Calendar.SECOND, 0)
+        c.set(Calendar.MILLISECOND, 0)
+        val howMany = c.timeInMillis - System.currentTimeMillis()
+        object : CountDownTimer(howMany, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                var remainingTime = millisUntilFinished / 1000
+                var sec: String = "%02d".format(remainingTime % 60)
+                remainingTime /= 60
+                var min: String = "%02d".format(remainingTime % 60)
+                remainingTime /= 60
+                var hour: String = "%02d".format(remainingTime % 60)
+                secondCounter.text = sec
+                minuteCounter.text = min
+                hourCounter.text = hour
+            }
+
+            override fun onFinish() {
+            }
+        }.start()
 
         //banners
         advBanners = viewModel.getAdvBanners()
