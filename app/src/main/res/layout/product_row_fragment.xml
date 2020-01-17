@@ -16,7 +16,6 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:paddingEnd="15dp">
-
             <TextView
                     android:id="@+id/moreButton"
                     android:layout_width="wrap_content"
@@ -32,12 +31,13 @@
                     android:textSize="12sp"
                     android:visibility="invisible" />
 
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
                 android:id="@+id/title"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="start"

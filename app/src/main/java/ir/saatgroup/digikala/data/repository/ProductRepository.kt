@@ -21,4 +21,6 @@ class ProductRepository(private val productDao: ProductDao) {
     }
 
     fun getIncredibleOffers(): List<IncredibleProduct> = productDao.getIncredibleOffers()
+    fun getNewest() = productDao.getNewest()
+    fun getAllTopByCategory(c:String) =productDao.getTopListByCategory(c)
 }

@@ -14,7 +14,7 @@ object ProductApiDao : ProductDao {
 
     override fun getTopSellers(): List<Product> {
         return runBlocking {
-            var out = mutableListOf<Product>()
+            val out = mutableListOf<Product>()
             val res = async { digikalaAPI.getTopList() }.await()
             for (item in res.responses[0].hits.hits) {
                 out.add(item._source)
@@ -24,11 +24,27 @@ object ProductApiDao : ProductDao {
     }
 
     override fun getNewest(): List<Product> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return runBlocking {
+            val out = mutableListOf<Product>()
+            val res = async { digikalaAPI.getTopList() }.await()
+            for (item in res.responses[1].hits.hits) {
+                out.add(item._source)
+            }
+            return@runBlocking out
+        }
     }
 
-    override fun getTopListByCategory(): List<Product> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getTopListByCategory(category: String): List<Product> {
+        return runBlocking {
+            val out = mutableListOf<Product>()
+            val res = async { digikalaAPI.getTopListByCategory(category) }.await()
+            for (item in res.responses[0].hits.hits) {
+                out.add(item._source)
+            }
+            return@runBlocking out
+        }
+
+
     }
 
     override fun getIncredibleOffers(): List<IncredibleProduct> {

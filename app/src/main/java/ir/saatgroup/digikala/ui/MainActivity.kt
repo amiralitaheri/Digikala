@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
             }
         }.start()
-        var incredibleProductsRowFragment: IncredibleProductsRowFragment =
+        val incredibleProductsRowFragment: IncredibleProductsRowFragment =
             specialOfferFragmentView as IncredibleProductsRowFragment
         incredibleProductsRowFragment.setData(viewModel.getIncredibleOffers().value!!)
 
@@ -106,6 +106,17 @@ class MainActivity : AppCompatActivity() {
         topSellersFragment = topSellersFragmentView as ProductRowFragment
         topSellersFragment.setData("محصولات پرفروش", topSellers.value!!, true, "", false)
 
+        //newest
+        (newestFragmentView as ProductRowFragment).setData("جدیدترین محصولات", viewModel.getNewest().value!!, true, "", false)
+
+        //cat1
+        (cate1FragmentView as ProductRowFragment).setData("موبایل", viewModel.getAllTopByCategory("c1"), false, "", false)
+        //cat2
+        (cate2FragmentView as ProductRowFragment).setData("صوتی و تصویری", viewModel.getAllTopByCategory("c7"), false, "", false)
+        //cat3
+        (cate3FragmentView as ProductRowFragment).setData("کتاب و مجلات", viewModel.getAllTopByCategory("c5917"), false, "", false)
+        //cat4
+        (cate4FragmentView as ProductRowFragment).setData("لبنیات", viewModel.getAllTopByCategory("c9208"), false, "", false)
 
     }
 }

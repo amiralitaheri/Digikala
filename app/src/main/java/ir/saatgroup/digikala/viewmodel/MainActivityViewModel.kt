@@ -23,6 +23,7 @@ class MainActivityViewModel : ViewModel() {
     private var advBanners = MutableLiveData<List<Banner>>()
     private var mobileBanners = MutableLiveData<List<List<Banner>>>()
     private var topSellers = MutableLiveData<List<Product>>()
+    private var newest = MutableLiveData<List<Product>>()
     private var incredibleProducts = MutableLiveData<List<IncredibleProduct>>()
 
     fun getSliders(): LiveData<List<Banner>> {
@@ -53,6 +54,14 @@ class MainActivityViewModel : ViewModel() {
     fun getIncredibleOffers(): LiveData<List<IncredibleProduct>> {
         incredibleProducts.value = productRepository.getIncredibleOffers()
         return incredibleProducts
+    }
+
+    fun getNewest(): LiveData<List<Product>> {
+        newest.value = productRepository.getNewest()
+        return newest
+    }
+    fun getAllTopByCategory(category:String):List<Product>{
+        return productRepository.getAllTopByCategory(category)
     }
 
 }
