@@ -7,9 +7,14 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ir.saatgroup.digikala.R
 import ir.saatgroup.digikala.data.pojo.Product
+import ir.saatgroup.digikala.utils.convertToPrice
 import kotlinx.android.synthetic.main.product_holder_linar.view.*
 
-class ProductRowRecycleAdapter(private val inflater: LayoutInflater, var dataSource: List<Product>) :
+class ProductRowRecycleAdapter(
+    private val inflater: LayoutInflater,
+    var dataSource: List<Product>,
+    var topPrice: Boolean
+) :
     RecyclerView.Adapter<ProductRowRecycleAdapter.ItemHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         return ItemHolder(inflater.inflate(R.layout.product_holder_linar, parent, false))
@@ -20,56 +25,28 @@ class ProductRowRecycleAdapter(private val inflater: LayoutInflater, var dataSou
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.bindClass(dataSource[position])
+        holder.bindClass(dataSource[position], topPrice)
     }
 
 
     class ItemHolder(v: View) : RecyclerView.ViewHolder(v) {
         private var parentView: View = v
         private var product: Product? = null
-        fun bindClass(p: Product) {
+        fun bindClass(p: Product, top: Boolean) {
             this.product = p
             parentView.title.text = p.FaTitle
             parentView.image.setImageURI(p.ImagePath)
-
-            if (p.MinPriceList != 0) {
-                parentView.topPrice.isVisible = true
-                parentView.topPrice.text = convertPrice(p.MinPriceList)
-            } else {
+            if (p.MinPriceList == 0 || !top) {
                 parentView.topPrice.isVisible = false
+            } else {
+                parentView.topPrice.text = p.MinPriceList.convertToPrice()
+                parentView.topPrice.isVisible = true
             }
 
-            parentView.lowPrice.text = convertPrice(p.MinPrice)
-
+            parentView.lowPrice.text = p.MinPrice.convertToPrice()
             parentView.setOnClickListener {
                 //todo add link
             }
-        }
-
-        private fun convertPrice(price: Int): String {
-            var out = ""
-            var count = 0
-            while (price > 0) {
-                if (count % 3 == 0) {
-                    out = ",$out"
-                }
-                count++
-                when (price % 10) {
-                    0 -> out = "\u06f0" + out
-                    1 -> out = "\u06f1" + out
-                    2 -> out = "\u06f2" + out
-                    3 -> out = "\u06f3" + out
-                    4 -> out = "\u06f4" + out
-                    5 -> out = "\u06f5" + out
-                    6 -> out = "\u06f6" + out
-                    7 -> out = "\u06f7" + out
-                    8 -> out = "\u06f8" + out
-                    9 -> out = "\u06f9" + out
-                }
-
-            }
-
-            return " تومان$out"
         }
     }
 }

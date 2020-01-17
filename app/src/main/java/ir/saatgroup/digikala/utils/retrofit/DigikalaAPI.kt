@@ -25,4 +25,6 @@ interface DigikalaAPI {
     @GET("https://search.digikala.com/api2/Data/GetAllTopList?mobile=2")
     suspend fun getTopListByCategory(@Query("category") category: String, @HeaderMap headerMap: Map<String, String> = RetrofitConfig.headers): TopListModel
 
+    @GET("https://search.digikala.com/api/IncredibleOffer/GetIncredibleOffer?mobile=2")
+    suspend fun getIncrdibleOffers( @HeaderMap headerMap: Map<String, String> = RetrofitConfig.headers):IncredibleModel
 }

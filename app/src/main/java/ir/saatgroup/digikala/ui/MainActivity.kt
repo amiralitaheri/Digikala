@@ -70,11 +70,11 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTick(millisUntilFinished: Long) {
                 var remainingTime = millisUntilFinished / 1000
-                var sec: String = "%02d".format(remainingTime % 60)
+                val sec: String = "%02d".format(remainingTime % 60)
                 remainingTime /= 60
-                var min: String = "%02d".format(remainingTime % 60)
+                val min: String = "%02d".format(remainingTime % 60)
                 remainingTime /= 60
-                var hour: String = "%02d".format(remainingTime % 60)
+                val hour: String = "%02d".format(remainingTime % 60)
                 secondCounter.text = sec
                 minuteCounter.text = min
                 hourCounter.text = hour
@@ -83,6 +83,9 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
             }
         }.start()
+        var incredibleProductsRowFragment: IncredibleProductsRowFragment =
+            specialOfferFragmentView as IncredibleProductsRowFragment
+        incredibleProductsRowFragment.setData(viewModel.getIncredibleOffers().value!!)
 
         //banners
         advBanners = viewModel.getAdvBanners()
@@ -100,9 +103,8 @@ class MainActivity : AppCompatActivity() {
 
         //topSellers
         topSellers = viewModel.getTopSellers()
-//        topSellersFragment = topSellersFragmentView as ProductRowFragment
-//        topSellersFragment.setData("محصولات پرفروش", topSellers.value!!, true, "")
-        //topSellersFragment = ProductRowFragment.newInstance("محصولات پرفروش", topSellers.value!!, true, "")
+        topSellersFragment = topSellersFragmentView as ProductRowFragment
+        topSellersFragment.setData("محصولات پرفروش", topSellers.value!!, true, "", false)
 
 
     }

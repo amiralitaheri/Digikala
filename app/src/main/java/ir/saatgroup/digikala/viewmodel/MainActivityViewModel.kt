@@ -8,6 +8,7 @@ import ir.saatgroup.digikala.data.apiDaos.CategoryApiDao
 import ir.saatgroup.digikala.data.apiDaos.ProductApiDao
 import ir.saatgroup.digikala.data.pojo.Banner
 import ir.saatgroup.digikala.data.pojo.CategoryWithSub
+import ir.saatgroup.digikala.data.pojo.IncredibleProduct
 import ir.saatgroup.digikala.data.pojo.Product
 import ir.saatgroup.digikala.data.repository.BannerRepository
 import ir.saatgroup.digikala.data.repository.CategoryRepository
@@ -22,6 +23,7 @@ class MainActivityViewModel : ViewModel() {
     private var advBanners = MutableLiveData<List<Banner>>()
     private var mobileBanners = MutableLiveData<List<List<Banner>>>()
     private var topSellers = MutableLiveData<List<Product>>()
+    private var incredibleProducts = MutableLiveData<List<IncredibleProduct>>()
 
     fun getSliders(): LiveData<List<Banner>> {
         sliderBanners.value = bannerRepository.getSlider()
@@ -46,6 +48,11 @@ class MainActivityViewModel : ViewModel() {
     fun getTopSellers(): LiveData<List<Product>> {
         topSellers.value = productRepository.getTopSellers()
         return topSellers
+    }
+
+    fun getIncredibleOffers(): LiveData<List<IncredibleProduct>> {
+        incredibleProducts.value = productRepository.getIncredibleOffers()
+        return incredibleProducts
     }
 
 }

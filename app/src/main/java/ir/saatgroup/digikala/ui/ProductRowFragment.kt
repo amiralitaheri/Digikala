@@ -1,7 +1,6 @@
 package ir.saatgroup.digikala.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +22,7 @@ class ProductRowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("taheri", "created view")
-        recycleAdapter = ProductRowRecycleAdapter(inflater, listOf())
+        recycleAdapter = ProductRowRecycleAdapter(inflater, listOf(), false)
         return inflater.inflate(R.layout.product_row_fragment, container, false)
     }
 
@@ -34,10 +32,17 @@ class ProductRowFragment : Fragment() {
         recycler.adapter = recycleAdapter
     }
 
-    fun setData(titleString: String, products: List<Product>, moreButtonActive: Boolean, link: String) {
+    fun setData(
+        titleString: String,
+        products: List<Product>,
+        moreButtonActive: Boolean,
+        link: String,
+        topPrice: Boolean
+    ) {
         recycleAdapter.dataSource = products
+        recycleAdapter.topPrice = topPrice
         recycleAdapter.notifyDataSetChanged()
-        title.text =titleString
+        title.text = titleString
         moreButton.isVisible = moreButtonActive
         //todo add link
     }
