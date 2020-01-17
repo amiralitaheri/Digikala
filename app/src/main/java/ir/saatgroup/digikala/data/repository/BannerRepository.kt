@@ -19,7 +19,7 @@ class BannerRepository(private val bannerDao: BannerDao) {
     fun getAdv(): List<Banner> {
         return bannerDao.getAdvBanners()
     }
-    fun getMobile(): List<Banner> {
-        return bannerDao.getMainBanners()
+    fun getMobile(): List<List<Banner>> {
+        return bannerDao.getMobileBanners()
     }
 }

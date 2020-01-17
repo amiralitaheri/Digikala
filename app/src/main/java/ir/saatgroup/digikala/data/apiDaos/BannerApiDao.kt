@@ -18,7 +18,7 @@ object BannerApiDao : BannerDao {
         }
     }
 
-    override fun getMainBanners(): List<Banner> {
+    override fun getMobileBanners(): List<List<Banner>> {
         return runBlocking {
             return@runBlocking async { digikalaAPI.getMobileBanners() }.await().Data
 
