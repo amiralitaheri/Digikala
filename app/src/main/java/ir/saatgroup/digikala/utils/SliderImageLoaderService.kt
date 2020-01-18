@@ -1,4 +1,4 @@
-package ir.saatgroup.digikala
+package ir.saatgroup.digikala.utils
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso

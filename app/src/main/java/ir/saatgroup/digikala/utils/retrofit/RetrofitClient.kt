@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val DigikalaAPIClient by lazy {
     Retrofit.Builder()
-        .baseUrl("https://jsonplaceholder.typicode.com/")
+        .baseUrl("https://digikala.com/")
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .build().create(DigikalaAPI::class.java)
 }

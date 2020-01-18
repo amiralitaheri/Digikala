@@ -1,20 +1,23 @@
 package ir.saatgroup.digikala.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
 import com.facebook.drawee.backends.pipeline.Fresco
 import ir.saatgroup.digikala.R
-import ir.saatgroup.digikala.SliderImageLoaderService
 import ir.saatgroup.digikala.adapters.ChipAdapter
 import ir.saatgroup.digikala.adapters.MainSliderAdapter
 import ir.saatgroup.digikala.data.pojo.Banner
 import ir.saatgroup.digikala.data.pojo.CategoryWithSub
 import ir.saatgroup.digikala.data.pojo.Product
+import ir.saatgroup.digikala.utils.SliderImageLoaderService
 import ir.saatgroup.digikala.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import ss.com.bannerslider.Slider
 import java.util.*
 
@@ -107,16 +110,60 @@ class MainActivity : AppCompatActivity() {
         topSellersFragment.setData("محصولات پرفروش", topSellers.value!!, true, "", false)
 
         //newest
-        (newestFragmentView as ProductRowFragment).setData("جدیدترین محصولات", viewModel.getNewest().value!!, true, "", false)
+        (newestFragmentView as ProductRowFragment).setData(
+            "جدیدترین محصولات",
+            viewModel.getNewest().value!!,
+            true,
+            "",
+            false
+        )
 
         //cat1
-        (cate1FragmentView as ProductRowFragment).setData("موبایل", viewModel.getAllTopByCategory("c1"), false, "", false)
+        (cate1FragmentView as ProductRowFragment).setData(
+            "موبایل",
+            viewModel.getAllTopByCategory("c1"),
+            false,
+            "",
+            false
+        )
         //cat2
-        (cate2FragmentView as ProductRowFragment).setData("صوتی و تصویری", viewModel.getAllTopByCategory("c7"), false, "", false)
+        (cate2FragmentView as ProductRowFragment).setData(
+            "صوتی و تصویری",
+            viewModel.getAllTopByCategory("c7"),
+            false,
+            "",
+            false
+        )
         //cat3
-        (cate3FragmentView as ProductRowFragment).setData("کتاب و مجلات", viewModel.getAllTopByCategory("c5917"), false, "", false)
+        (cate3FragmentView as ProductRowFragment).setData(
+            "کتاب و مجلات",
+            viewModel.getAllTopByCategory("c5917"),
+            false,
+            "",
+            false
+        )
         //cat4
-        (cate4FragmentView as ProductRowFragment).setData("لبنیات", viewModel.getAllTopByCategory("c9208"), false, "", false)
+        (cate4FragmentView as ProductRowFragment).setData(
+            "لبنیات",
+            viewModel.getAllTopByCategory("c9208"),
+            false,
+            "",
+            false
+        )
+
+
+        //drawer
+        toolbar.menuButton.setOnClickListener {
+            drawerLayout.openDrawer(drawer)
+        }
+
+        val intent = Intent(this, MainMenuActivity::class.java)
+        drawer.menu.getItem(1).setOnMenuItemClickListener {
+            drawerLayout.closeDrawer(GravityCompat.END)
+            startActivity(intent)
+            true
+        }
+
 
     }
 }
