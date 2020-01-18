@@ -146,10 +146,11 @@
                             android:paddingStart="15dp">
 
                         <TextView
-                                android:id="@+id/hourCounter"
+                            android:layout_marginTop="9dp"
+                            android:id="@+id/hourCounter"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:background="@color/digikalaDarkGrey"
+                                android:background="@drawable/ipbg"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:textSize="20sp"
@@ -167,10 +168,12 @@
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
                         <TextView
-                                android:id="@+id/minuteCounter"
+                            android:layout_marginTop="9dp"
+
+                            android:id="@+id/minuteCounter"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:background="@color/digikalaDarkGrey"
+                            android:background="@drawable/ipbg"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:textSize="20sp"
@@ -189,10 +192,11 @@
                                 android:textStyle="bold"/>
 
                         <TextView
+                            android:layout_marginTop="9dp"
                                 android:id="@+id/secondCounter"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:background="@color/digikalaDarkGrey"
+                                android:background="@drawable/ipbg"
                                 android:gravity="center"
                                 android:textColor="@color/white"
                                 android:textSize="20sp"
